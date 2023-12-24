@@ -17,7 +17,7 @@ fun Route.brandRoute() = route("/v1/brand") {
         call.respond(result.await())
     }
 
-    get("/{id}") {
+    get("{id}") {
         call.parameters["id"]?.let { id ->
             call.respondText("Buscando marca $id")
         } ?: call.respond(HttpStatusCode.BadRequest)

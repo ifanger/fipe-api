@@ -14,12 +14,14 @@ class FipeRepositoryImpl(
     }
 
     override suspend fun findAll(referenceTableId: Int): List<Brand> {
+        val now = Date()
+
         return fipeClient.getBrands(referenceTableId).map {
             Brand(
                 id = it.id,
                 name = it.name,
                 fipeId = it.id,
-                lastModified = Date(),
+                lastModified = now,
             )
         }
     }
